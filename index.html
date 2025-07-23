@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos Optimizados para Cuidadores | Niños en Protección del Estado</title>
+    <meta name="description" content="Herramientas prácticas y optimizadas para trabajar con niños y adolescentes institucionalizados con TDAH, ODD y trastornos conductuales.">
+    <style>
+        /* ------------------- */
+        /*  1. Design System & Reset  */
+        /* ------------------- */
+        :root {
+            --color-primary: #3b82f6;
+            --color-primary-dark: #2563eb;
+            --color-secondary: #1d4ed8;
+            --color-accent: #10b981;
+            --color-accent-dark: #059669;
+            --color-dark: #1e293b;
+            --color-slate-700: #334155;
+            --color-slate-500: #64748b;
+            --color-slate-300: #cbd5e1;
+            --color-slate-100: #f1f5f9;
+            --color-white: #ffffff;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --border-radius: 0.75rem; /* 12px */
+            --transition-speed: 0.3s;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-slate-100);
+            color: var(--color-slate-700);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--color-dark);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.25rem; } /* 36px */
+        h2 { font-size: 1.875rem; margin-bottom: 1.5rem; } /* 30px */
+        h3 { font-size: 1.25rem; } /* 20px */
+
+        p { margin-bottom: 1rem; }
+        ul { list-style: none; }
+        a { color: var(--color-primary); text-decoration: none; transition: color var(--transition-speed); }
+        a:hover { color: var(--color-primary-dark); }
+        img { max-width: 100%; display: block; }
+        
+        .container {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ------------------- */
+        /*  2. Components     */
+        /* ------------------- */
+
+        /* Header */
+        .site-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 0;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 20px;
+        }
+        .site-header .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .site-header .header-logo {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 0.5rem;
+            width: 120px;
+            height: auto;
+            box-shadow: var(--shadow-md);
+        }
+        @media (min-width: 768px) {
+            .site-header .header-content {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        /* Main Content & Cards */
+        main { padding: 3rem 0; }
+        .card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 3rem;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .card:hover {
+             transform: translateY(-5px);
+             box-shadow: var(--shadow-lg);
+        }
+        .card ul { list-style: disc; padding-left: 1.5rem; }
+        .card ul li { margin-bottom: 0.75rem; }
+
+        /* Flip Cards */
+        .flip-card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) { .flip-card-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .flip-card-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        .flip-card {
+            background-color: transparent;
+            height: 16rem; /* 256px */
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner, .flip-card:focus-within .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+        .flip-card-front {
+            background-color: var(--color-white);
+            text-align: center;
+        }
+        .flip-card-front .icon {
+            margin-bottom: 1rem;
+            width: 40px;
+            height: 40px;
+        }
+        .flip-card-front h3 { margin-bottom: 0.25rem; }
+        .flip-card-front p { color: var(--color-slate-500); margin-bottom: 0; }
+        .flip-card-back {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: rotateY(180deg);
+        }
+        .flip-card-back h3 { color: var(--color-white); margin-bottom: 1rem; align-self: flex-start; }
+        .flip-card-back ul { list-style-position: inside; font-size: 0.9rem; align-self: flex-start; }
+        .flip-card-back ul li { margin-bottom: 0.5rem; }
+        .flip-card[data-color="accent"] .flip-card-back { background-color: var(--color-accent); }
+        .flip-card[data-color="secondary"] .flip-card-back { background-color: var(--color-secondary); }
+
+        /* Collapsible Section / Accordion */
+        .collapsible-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) { .collapsible-grid { grid-template-columns: repeat(2, 1fr); } }
+        
+        .collapsible {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .collapsible-btn {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-weight: 700;
+            border: none;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+        }
+        .collapsible-btn[data-color="accent"] { background-color: var(--color-accent); }
+        .collapsible-btn[data-color="secondary"] { background-color: var(--color-secondary); }
+        .collapsible-btn[data-color="dark"] { background-color: var(--color-dark); }
+        
+        .collapsible-btn .icon {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition-speed) ease;
+        }
+        .collapsible-btn[aria-expanded="true"] .icon {
+            transform: rotate(180deg);
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .collapsible-content-inner {
+            padding: 1.5rem;
+        }
+        .collapsible-content-inner ul { list-style: disc; padding-left: 1.5rem; }
+        .collapsible-content-inner ul li { margin-bottom: 0.75rem; }
+        .collapsible-content-inner strong { color: var(--color-dark); }
+
+        /* Two-Column Layout Section */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 1024px) { .two-col-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(30, 41, 59, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-speed), visibility var(--transition-speed);
+        }
+        .modal.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+            margin: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-20px);
+            transition: transform var(--transition-speed);
+            max-height: 90vh; /* Prevents overflow on short screens */
+            overflow-y: auto; /* Allows content to scroll */
+        }
+        .modal.is-open .modal-content {
+            transform: translateY(0);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .modal-close-btn .icon {
+            width: 20px;
+            height: 20px;
+            color: var(--color-slate-500);
+            transition: color var(--transition-speed);
+        }
+        .modal-close-btn:hover .icon {
+            color: var(--color-dark);
+        }
+
+        /* Forms & Buttons */
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-slate-300);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .btn {
+            display: inline-block;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed), opacity var(--transition-speed);
+            text-align: center;
+        }
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: var(--color-slate-100);
+            color: var(--color-slate-700);
+            border: 1px solid var(--color-slate-300);
+        }
+        .btn-secondary:hover:not(:disabled) {
+            background-color: #e2e8f0;
+        }
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-dark);
+            color: var(--color-slate-300);
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        .site-footer a { color: var(--color-slate-300); }
+        .site-footer a:hover { color: var(--color-primary); }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+            justify-content: center;
+        }
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                text-align: left;
+            }
+        }
+        .footer-grid h3 { color: var(--color-white); margin-bottom: 1rem; }
+        .footer-grid ul li { margin-bottom: 0.5rem; }
+        .footer-grid .icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        @media (min-width: 768px) { .social-links { justify-content: flex-start; } }
+        .social-links a .icon {
+            width: 24px;
+            height: 24px;
+            transition: color var(--transition-speed), transform var(--transition-speed);
+        }
+        .social-links a:hover .icon {
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--color-slate-700);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--color-slate-500);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1>Recursos para cuidadores</h1>
+                    <p>Niños, niñas y adolescentes en protección del estado</p>
+                </div>
+                <!-- SVG Logo Placeholder -->
+                <svg class="header-logo" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" aria-label="Logo de la institución">
+                    <rect width="150" height="100" rx="10" fill="var(--color-primary)"/>
+                    <path d="M40 25 L75 75 L110 25" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="40" cy="25" r="10" fill="white"/>
+                    <circle cx="110" cy="25" r="10" fill="white"/>
+                    <circle cx="75" cy="75" r="10" fill="white"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card" id="introduction">
+            <h2>Introducción a los problemas conductuales en contextos institucionales</h2>
+            <p>Los niños, niñas y adolescentes bajo protección del estado frecuentemente presentan desafíos conductuales y emocionales como resultado de experiencias adversas en la infancia. Estos pueden manifestarse como:</p>
+            <ul>
+                <li>Dificultades para regular emociones</li>
+                <li>Problemas de atención e hiperactividad (TDAH)</li>
+                <li>Comportamiento oposicionista (ODD)</li>
+                <li>Déficit en habilidades sociales</li>
+                <li>Baja tolerancia a la frustración</li>
+            </ul>
+            <p style="margin-bottom:0;">Este recurso ofrece estrategias basadas en evidencia para apoyar el desarrollo saludable de estos jóvenes.</p>
+        </section>
+
+        <section>
+            <h2>Estrategias prácticas por trastorno</h2>
+            <div class="flip-card-grid">
+                <!-- TDAH Card -->
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: var(--color-primary);" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <h3>TDAH</h3>
+                            <p>Trastorno por Déficit de Atención e Hiperactividad</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Estrategias para TDAH</h3>
+                            <ul>
+                                <li>Estructura y rutinas claras</li>
+                                <li>Instrucciones breves y concretas</li>
+                                <li>Refuerzo positivo inmediato</li>
+                                <li>Pausas activas frecuentes</li>
+                                <li>Organizadores visuales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ODD Card -->
+                <div class="flip-card" data-color="accent" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                             <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: var(--color-accent);" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"></path></svg>
+                            <h3>ODD</h3>
+                            <p>Trastorno Oposicionista Desafiante</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Estrategias para ODD</h3>
+                            <ul>
+                                <li>Evitar luchas de poder</li>
+                                <li>Ofrecer opciones limitadas</li>
+                                <li>Reforzar conductas cooperativas</li>
+                                <li>Mantener calma y consistencia</li>
+                                <li>Enseñar resolución de conflictos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regulación Emocional Card -->
+                <div class="flip-card" data-color="secondary" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: var(--color-secondary);" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            <h3>Regulación Emocional</h3>
+                            <p>Dificultades emocionales</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Estrategias emocionales</h3>
+                            <ul>
+                                <li>Validar emociones primero</li>
+                                <li>Enseñar vocabulario emocional</li>
+                                <li>Técnicas de respiración</li>
+                                <li>Espacios de calma</li>
+                                <li>Modelar regulación</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 3rem;">
+            <h2>Actividades recomendadas</h2>
+            <div class="collapsible-grid">
+                <div class="collapsible">
+                    <button class="collapsible-btn" aria-expanded="false" aria-controls="collapsible-content-1">
+                        <span>Actividades para atención y concentración</span>
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="collapsible-content" id="collapsible-content-1">
+                        <div class="collapsible-content-inner">
+                            <ul>
+                                <li><strong>Juegos de memoria:</strong> Cartas, parejas, secuencias</li>
+                                <li><strong>Laberintos y sopas de letras:</strong> Comenzar con niveles simples</li>
+                                <li><strong>Rompecabezas:</strong> Aumentar dificultad gradualmente</li>
+                                <li><strong>Actividades de observación:</strong> "Encuentra las diferencias"</li>
+                                <li><strong>Juegos de construcción:</strong> Bloques, LEGO siguiendo modelos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-btn" data-color="accent" aria-expanded="false" aria-controls="collapsible-content-2">
+                        <span>Actividades para regulación emocional</span>
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="collapsible-content" id="collapsible-content-2">
+                        <div class="collapsible-content-inner">
+                            <ul>
+                                <li><strong>Termómetro emocional:</strong> Identificar niveles de emoción</li>
+                                <li><strong>Caja de herramientas calmantes:</strong> Objetos sensoriales</li>
+                                <li><strong>Dibujo emocional:</strong> Expresar sentimientos con colores</li>
+                                <li><strong>Respiración con guía:</strong> "Inflar globo en la barriga"</li>
+                                <li><strong>Role-playing:</strong> Practicar situaciones desafiantes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-btn" data-color="secondary" aria-expanded="false" aria-controls="collapsible-content-3">
+                        <span>Actividades para habilidades sociales</span>
+                         <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="collapsible-content" id="collapsible-content-3">
+                        <div class="collapsible-content-inner">
+                            <ul>
+                                <li><strong>Juegos cooperativos:</strong> Donde todos ganan</li>
+                                <li><strong>Actividades de turnos:</strong> Juegos de mesa simples</li>
+                                <li><strong>Dramatizaciones:</strong> Practicar saludos, peticiones</li>
+                                <li><strong>Proyectos grupales:</strong> Mural colaborativo</li>
+                                <li><strong>Juegos de roles:</strong> Practicar empatía</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-btn" data-color="dark" aria-expanded="false" aria-controls="collapsible-content-4">
+                        <span>Actividades para autoestima</span>
+                         <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="collapsible-content" id="collapsible-content-4">
+                        <div class="collapsible-content-inner">
+                            <ul>
+                                <li><strong>Árbol de logros:</strong> Hojas con éxitos</li>
+                                <li><strong>Caja de cualidades:</strong> Notas positivas</li>
+                                <li><strong>Autobiografía positiva:</strong> Historia personal</li>
+                                <li><strong>Collage "Yo puedo":</strong> Imágenes de capacidades</li>
+                                <li><strong>Entrevistas positivas:</strong> Preguntas sobre fortalezas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 3rem;">
+             <div class="two-col-grid">
+                <div class="card">
+                    <h2>Errores comunes a evitar</h2>
+                    <ul>
+                        <li><strong>Personalizar el comportamiento:</strong> "Me está desafiando" en lugar de verlo como síntoma</li>
+                        <li><strong>Expectativas poco realistas:</strong> Pedir más de lo que pueden dar según su desarrollo</li>
+                        <li><strong>Castigos prolongados:</strong> Son inefectivos y aumentan la frustración</li>
+                        <li><strong>Reforzar solo lo negativo:</strong> Ignorar los pequeños avances positivos</li>
+                        <li><strong>Falta de consistencia:</strong> Cambiar reglas o consecuencias frecuentemente</li>
+                        <li><strong>Ignorar factores ambientales:</strong> No adaptar el espacio a sus necesidades</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>Habilidades clave para los adultos</h2>
+                    <ul>
+                        <li><strong>Regulación emocional:</strong> Mantener la calma ante conductas desafiantes</li>
+                        <li><strong>Paciencia activa:</strong> Entender que el cambio es proceso</li>
+                        <li><strong>Observación:</strong> Detectar patrones y desencadenantes</li>
+                        <li><strong>Comunicación clara:</strong> Instrucciones simples y positivas</li>
+                        <li><strong>Flexibilidad:</strong> Adaptarse a necesidades cambiantes</li>
+                        <li><strong>Autocuidado:</strong> Manejar el estrés para evitar burnout</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Planificador de actividades</h2>
+            <p>Utilice este formulario para diseñar una actividad basada en las estrategias recomendadas.</p>
+            <button id="openModalBtn" class="btn btn-primary">
+                Crear nueva actividad
+            </button>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- <div>
+                    <h3>Recursos adicionales</h3>
+                    <ul>
+                        <li><a href="#">Guías descargables</a></li>
+                        <li><a href="#">Bibliografía recomendada</a></li>
+                        <li><a href="#">Videos instructivos</a></li>
+                    </ul>
+                </div> -->
+                
+                <div>
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>aljimenez.n@gmail.com</li>
+                        <li><svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.124a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.124.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5h-1.5A13.5 13.5 0 012 3.5z" clip-rule="evenodd"></path></svg>+57 3006618851</li>
+                    </ul>
+                </div>
+                
+               <!--  <div>
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><svg class="icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" aria-label="Twitter"><svg class="icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.543 7.104c.015.164.015.33.015.492 0 5.01-3.815 10.786-10.786 10.786-2.14 0-4.13-.623-5.805-1.701.296.034.595.05.898.05 1.774 0 3.41-.602 4.7-1.62-1.657-.03-3.055-1.125-3.538-2.63.23.044.466.068.71.068.344 0 .68-.046.998-.13-1.732-.35-3.036-1.875-3.036-3.71v-.047c.508.283 1.09.452 1.714.473-1.016-.68-1.683-1.84-1.683-3.143 0-.69.186-1.33.51-1.88a10.71 10.71 0 007.784 3.945c-.085-.276-.13-.564-.13-.865 0-2.09 1.693-3.784 3.784-3.784 1.09 0 2.073.458 2.763 1.192.862-.17 1.673-.487 2.404-.918-.283.882-.883 1.62-1.663 2.09.766-.09 1.49-.294 2.168-.594-.508.76-1.16 1.41-1.92 1.912z" /></svg></a>
+                        <a href="#" aria-label="Instagram"><svg class="icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm6.406-11.845a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" aria-label="YouTube"><svg class="icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.78 22 12 22 12s0 3.22-.42 4.814c-.23.861-.907 1.538-1.768 1.768C18.219 19 12 19 12 19s-6.219 0-7.812-1.418c-.861-.23-1.538-.907-1.768-1.768C2.002 15.22 2 12 2 12s0-3.22.42-4.814c.23-.861.907-1.538 1.768-1.768C5.781 5 12 5 12 5s6.219 0 7.812.418zM9.57 15.584l6.176-3.584-6.176-3.584v7.168z" clip-rule="evenodd" /></svg></a>
+                    </div>
+                </div> -->
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Recursos para Cuidadores. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="activityModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Planificador de Actividad</h3>
+                <button id="closeModalBtn" class="modal-close-btn" aria-label="Cerrar modal">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <form id="activityForm">
+                <div class="form-group">
+                    <label for="activityName" class="form-label">Nombre de la actividad</label>
+                    <input type="text" id="activityName" name="activityName" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="activityObjective" class="form-label">Objetivo principal</label>
+                    <select id="activityObjective" name="objective" class="form-select" required>
+                        <option value="">Seleccione un objetivo</option>
+                        <option value="atencion">Mejorar atención/concentración</option>
+                        <option value="emocional">Regulación emocional</option>
+                        <option value="social">Habilidades sociales</option>
+                        <option value="autoestima">Fortalecer autoestima</option>
+                        <option value="conducta">Manejo conductual</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="participantsAge" class="form-label">Edad de los participantes</label>
+                    <input type="text" id="participantsAge" name="ageRange" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="activityDescription" class="form-label">Descripción detallada</label>
+                    <textarea id="activityDescription" name="description" rows="4" class="form-textarea"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="materials" class="form-label">Materiales necesarios</label>
+                    <textarea id="materials" name="materials" rows="2" class="form-textarea"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration" class="form-label">Duración estimada (minutos)</label>
+                    <input type="number" id="duration" name="duration" class="form-input" min="1">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" id="cancelActivityBtn" class="btn btn-secondary">
+                        Cancelar
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary">
+                        Guardar actividad
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 
+    ==================================================================
+    INSTRUCCIONES PARA CONECTAR EL FORMULARIO A GOOGLE SHEETS
+    ==================================================================
+
+    Siga estos 5 pasos para que los datos del formulario se guarden automáticamente en una hoja de cálculo de Google.
+
+    PASO 1: CREAR LA HOJA DE CÁLCULO EN GOOGLE SHEETS
+    1. Vaya a sheets.google.com y cree una nueva hoja de cálculo en blanco.
+    2. En la primera fila (fila 1), escriba los encabezados de las columnas.
+       IMPORTANTE: Estos encabezados deben coincidir EXACTAMENTE con los atributos `name` del formulario HTML.
+       Para este formulario, los encabezados deben ser:
+       
+       A1: timestamp      (Esta columna la llenará el script automáticamente con la fecha y hora)
+       B1: activityName
+       C1: objective
+       D1: ageRange
+       E1: description
+       F1: materials
+       G1: duration
+
+    PASO 2: CREAR EL SCRIPT DE GOOGLE APPS
+    1. En su hoja de cálculo, vaya a "Extensiones" -> "Apps Script". Se abrirá una nueva pestaña con el editor de scripts.
+    2. Borre cualquier código que aparezca por defecto en el archivo `Código.gs`.
+    3. Copie y pegue el siguiente código completo en el editor:
+
+       ------------------------- INICIO DEL CÓDIGO DEL SCRIPT -------------------------
+       const SHEET_NAME = "Hoja 1"; // <-- Asegúrese de que este sea el nombre de su hoja.
+       const SCRIPT_PROP = PropertiesService.getScriptProperties();
+
+       function doPost(e) {
+         const lock = LockService.getScriptLock();
+         lock.tryLock(10000);
+
+         try {
+           const doc = SpreadsheetApp.getActiveSpreadsheet();
+           const sheet = doc.getSheetByName(SHEET_NAME);
+           
+           const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+           const nextRow = sheet.getLastRow() + 1;
+           
+           const newRow = headers.map(function(header) {
+             if (header.toLowerCase() === 'timestamp') {
+               return new Date();
+             }
+             return e.parameter[header] || ''; // Usa '' si el valor no existe
+           });
+           
+           sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
+           
+           return ContentService
+             .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+             .setMimeType(ContentService.MimeType.JSON);
+
+         } catch (e) {
+           return ContentService
+             .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+             .setMimeType(ContentService.MimeType.JSON);
+         } finally {
+           lock.releaseLock();
+         }
+       }
+       -------------------------- FIN DEL CÓDIGO DEL SCRIPT ---------------------------
+
+    PASO 3: DESPLEGAR EL SCRIPT COMO UNA APLICACIÓN WEB
+    1. Guarde el proyecto de script (icono del disquete). Dele un nombre, por ejemplo, "Formulario Web".
+    2. Haga clic en el botón "Implementar" (arriba a la derecha) y seleccione "Nueva implementación".
+    3. Haga clic en el icono del engranaje ("Seleccionar tipo") y elija "Aplicación web".
+    4. En la configuración, ajuste lo siguiente:
+       - Descripción: (Opcional) "API para formulario de actividades".
+       - Ejecutar como: "Yo" (su cuenta de Google).
+       - Quién tiene acceso: "Cualquier persona". <-- ¡ESTO ES MUY IMPORTANTE!
+    5. Haga clic en "Implementar".
+    6. Google le pedirá que autorice los permisos. Haga clic en "Autorizar acceso", seleccione su cuenta, haga clic en "Configuración avanzada" (si aparece) y luego en "Ir a [nombre del proyecto] (no seguro)". Finalmente, haga clic en "Permitir".
+
+    PASO 4: OBTENER LA URL DE LA APLICACIÓN WEB
+    1. Después de implementar, aparecerá una ventana con la "URL de la aplicación web".
+    2. Copie esta URL. La necesitará en el siguiente paso.
+
+    PASO 5: CONECTAR EL HTML CON EL SCRIPT
+    1. Vuelva a este archivo HTML.
+    2. Busque el script de JavaScript al final del archivo.
+    3. Encuentre la línea: `const scriptURL = 'PEGAR_AQUÍ_LA_URL_DEL_SCRIPT_DE_GOOGLE';`
+    4. Reemplace `PEGAR_AQUÍ_LA_URL_DEL_SCRIPT_DE_GOOGLE` con la URL que copió en el paso 4.
+       Debería verse algo así:
+       `const scriptURL = 'https://script.google.com/macros/s/AKfycb.../exec';`
+
+    ¡Y LISTO! Guarde los cambios en su archivo HTML y ahora, cada vez que envíe el formulario, los datos aparecerán en su hoja de Google Sheets.
+    -->
+
+    <script>
+        // IIFE para prevenir contaminación del ámbito global
+        (function() {
+            document.addEventListener('DOMContentLoaded', () => {
+                // --- Funcionalidad de secciones colapsables ---
+                const collapsibleBtns = document.querySelectorAll('.collapsible-btn');
+                collapsibleBtns.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = document.getElementById(button.getAttribute('aria-controls'));
+                        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                        button.setAttribute('aria-expanded', !isExpanded);
+                        content.style.maxHeight = isExpanded ? '0' : content.scrollHeight + 'px';
+                    });
+                });
+
+                // --- Funcionalidad del Modal ---
+                const modal = document.getElementById('activityModal');
+                const openBtn = document.getElementById('openModalBtn');
+                const closeBtn = document.getElementById('closeModalBtn');
+                const cancelBtn = document.getElementById('cancelActivityBtn');
+                const form = document.getElementById('activityForm');
+                const submitBtn = document.getElementById('submitBtn');
+                let lastFocusedElement;
+
+                const focusableElementsSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+                let focusableElements;
+                
+                const openModal = () => {
+                    lastFocusedElement = document.activeElement;
+                    modal.removeAttribute('hidden');
+                    document.body.style.overflow = 'hidden';
+                    
+                    setTimeout(() => modal.classList.add('is-open'), 10);
+                    
+                    focusableElements = Array.from(modal.querySelectorAll(focusableElementsSelector));
+                    focusableElements[0]?.focus();
+
+                    document.addEventListener('keydown', handleKeydown);
+                };
+
+                const closeModal = () => {
+                    modal.classList.remove('is-open');
+                    document.body.style.overflow = 'auto';
+
+                    modal.addEventListener('transitionend', () => {
+                        modal.setAttribute('hidden', 'true');
+                    }, { once: true });
+                    
+                    lastFocusedElement?.focus();
+                    document.removeEventListener('keydown', handleKeydown);
+                };
+
+                const handleKeydown = (e) => {
+                    if (e.key === 'Escape') closeModal();
+                    if (e.key === 'Tab') {
+                        const firstElement = focusableElements[0];
+                        const lastElement = focusableElements[focusableElements.length - 1];
+                        if (e.shiftKey) {
+                            if (document.activeElement === firstElement) { lastElement.focus(); e.preventDefault(); }
+                        } else {
+                            if (document.activeElement === lastElement) { firstElement.focus(); e.preventDefault(); }
+                        }
+                    }
+                };
+
+                openBtn.addEventListener('click', openModal);
+                closeBtn.addEventListener('click', closeModal);
+                cancelBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+                
+                // --- Envío del formulario a Google Sheets ---
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbw-yY7igulL3JwIFRqD01LpjvfRc6q0G1acgBi4ItkELS-kG2XPdKr_BxM5y0qcoXGC/exec';
+                
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Guardando...';
+
+                    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                        .then(response => {
+                            if (!response.ok) { throw new Error('Network response was not ok'); }
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Success:', data);
+                            alert('Actividad guardada exitosamente.');
+                            form.reset();
+                            closeModal();
+                        })
+                        .catch(error => {
+                            console.error('Error!', error.message);
+                            alert('Error al guardar la actividad. Por favor, intente de nuevo.');
+                        })
+                        .finally(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Guardar actividad';
+                        });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
